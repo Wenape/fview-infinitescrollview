@@ -1,0 +1,43 @@
+<head>
+  <title>InfiniteScrollview Example</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+</head>
+
+<body>
+  {{>layout}}
+</body>
+
+<template name="layout">
+  {{#HeaderFooterLayout headerSize="48"}}
+
+    {{#Surface target="header" translate="[0, 0, 1]" class="header"}}
+      <a href="http://randomuser.me/" style="text-decoration: none"><h3 style="text-align: center">Infinite Random Users</h3></a>
+    {{/Surface}}
+
+    {{>View target="content" template="infinite" size="[undefined, undefined]"}}
+
+  {{/HeaderFooterLayout}}
+</template>
+
+<template name="infinite">
+  {{#InfiniteScrollview offset=428 callback='getUsers'}}
+      {{#famousEach users}}
+        {{#Animate size="[undefined, 76]" onEnter=enter onLeave=leave}}
+          {{#Surface}}
+            <div class="item item-avatar">
+              <img src={{user.picture.medium}}>
+              <h2>{{user.name.first}}</h2>
+              <p>{{user.cell}}</p>
+            </div>
+          {{/Surface}}
+        {{/Animate}}
+      {{/famousEach}}
+      {{#if users}}
+        {{#Surface size="[undefined, 76]"}}
+          <div style="text-align: center; font-size: 34px; border: none" class="item">
+            <a class="ion-loading-c"></a>
+          </div>
+        {{/Surface}}
+      {{/if}}
+    {{/InfiniteScrollview}}
+</template>
