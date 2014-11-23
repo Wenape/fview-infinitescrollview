@@ -1,5 +1,8 @@
 if (Meteor.isClient) {
 
+  // initial values
+  Session.set('users', []);
+
   Template.infinite.rendered = function () {
     // Generate first batch of users
     getUsers();
@@ -9,6 +12,7 @@ if (Meteor.isClient) {
     users: function () {
       return Session.get('users');
     },
+    // optional animations (uses: mjn:fview-animate)
     enter : function() {
       return function(stateModifier, done) {
         stateModifier.setOpacity(0); // hide initially
@@ -20,7 +24,7 @@ if (Meteor.isClient) {
 }
 
 
-// Functions
+// Callback Function
 getUsers = function (count) {
   HTTP.get('http://api.randomuser.me/?results=' + 20, function (error, result) {
     if (! error) {

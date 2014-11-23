@@ -1,25 +1,41 @@
-# famous-lagometer
+# InfiniteScrollview - with added support for async data
 
-This is [IjzerenHein's
-KenBurnsContainer](https://github.com/IjzerenHein/famous-kenburnscontainer)
-packaged for Meteor to work with famous-views and either raix:famono or mjn:famous.
+NOTE: Famo.us > 0.3.0 is required for this plugin to function properly. 
+
+This is [JonnyBGod's](https://github.com/JonnyBGod/famous-infinitescroll) Famo.us plugin implemented for Meteor to work with famous-views and mjn:famous or raix:famono (using > 0.3.0 libs).
+
+
+DEMO: [Infinite Random Users](https://github.com/JonnyBGod/famous-infinitescroll)
+
+
 
 Usage:
 
 ```handlebars
-{{#KenBurnsContainer id="kbc"}}
-  {{#ImageSurface content="image.png"}}{{/ImageSurface}}
-{{#KenBurnsContainer}}
+{{#InfiniteScrollview offset=500 callback='getUsers'}}
+  {{#famousEach users}}
+    ...
+  {{/famousEach}}
+{{/InfiniteScrollview}}
 ```
+
+Properties:
+  * offset: distance in px from the bottom of the viewport to execute the callback function
+  * callback: global function defined by the user to be called when offset it reached
+
+Callback (Example):
 
 ```js
-var kenBurnsContainer = FView.byId("kbc").view;
-// create sequence of pan & zoom animations
-kenBurnsContainer.panAndZoom([0.0, 0.05], 1.9); // move to left-top & zoom-in
-kenBurnsContainer.delay();                      // wait a bit (use default delay)
-kenBurnsContainer.panAndZoom([0.5, 0.5], 3.0);  // move to center and zoom-in further
-kenBurnsContainer.delay(3000);                  // wait a bit
-kenBurnsContainer.panAndZoom(null, 1.0, 4000);  // zoom-out with custom duration
+getUsers = function (count) {
+  HTTP.get('http://api.randomuser.me/?results=20', function (error, result) {
+    if (! error) {
+      Session.set('users', $.merge(Session.get('users'), result.data.results));
+
+      // IMPORTANT: required for
+      Session.set('isLoading', false);
+    }
+  });
+}
 ```
 
-See the [full API reference](https://github.com/IjzerenHein/famous-kenburnscontainer/blob/master/docs/KenBurnsContainer.md).
+count: provides the actual number of children within the scroller (may be usefull to take in account when calling an API)
