@@ -1,0 +1,3 @@
+[submodule "example/styles/scss"]
+path = example/styles/scss
+url = https://github.com/driftyco/ionic/tree/master/scss
