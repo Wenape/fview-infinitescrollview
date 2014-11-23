@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'wenape:fview-infinitescroll',
+  name: 'wenape:fview-infinitescrollview',
   summary: "JonnyBGod's famous-infinitescroll packaged for famous-views with support for async data",
   version: '1.0.0',
   git: 'https://github.com/Wenape/fview-infinitescrollview',
