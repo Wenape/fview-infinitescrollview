@@ -1,6 +1,6 @@
 Package.describe({
   name: 'wenape:fview-infinitescroll',
-  summary: "JonnyBGod's kenBurnsContainer packaged for famous-views",
+  summary: "JonnyBGod's famous-infinitescroll packaged for famous-views with async support",
   version: '0.0.1',
   git: 'https://github.com/wenape/fview-kenburns.git',
 });

@@ -9,13 +9,10 @@
 
 <template name="layout">
   {{#HeaderFooterLayout headerSize="48"}}
-
     {{#Surface target="header" translate="[0, 0, 1]" class="header"}}
-      <a href="http://randomuser.me/" style="text-decoration: none"><h3 style="text-align: center">Infinite Random Users</h3></a>
+      <a href="http://randomuser.me" style="text-decoration: none"><h3 style="text-align: center">Infinite Random Users</h3></a>
     {{/Surface}}
-
     {{>View target="content" template="infinite" size="[undefined, undefined]"}}
-
   {{/HeaderFooterLayout}}
 </template>
 
