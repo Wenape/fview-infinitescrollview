@@ -26,12 +26,11 @@ if (Meteor.isClient) {
 
 // Callback Function
 getUsers = function (count) {
-  HTTP.get('http://api.randomuser.me/?results=' + 20, function (error, result) {
-    if (! error) {
+  HTTP.get('http://api.randomuser.me/?results=20', function (error, result) {
+    if (! error)
       Session.set('users', $.merge(Session.get('users'), result.data.results));
 
-      // continue detecting content
-      Session.set('isLoading', false);
-    }
+    // IMPORTANT: always call after you add any data to your scrollview (takes care of the async aspect)
+    Session.set('isLoading', false);
   });
 }

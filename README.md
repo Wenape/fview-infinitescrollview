@@ -28,12 +28,11 @@ Callback (Example):
 ```js
 getUsers = function (count) {
   HTTP.get('http://api.randomuser.me/?results=20', function (error, result) {
-    if (! error) {
+    if (! error)
       Session.set('users', $.merge(Session.get('users'), result.data.results));
 
-      // IMPORTANT: always call after you add any data to your scrollview (takes care of the async aspect)
-      Session.set('isLoading', false);
-    }
+    // IMPORTANT: always call after you add any data to your scrollview (takes care of the async aspect)
+    Session.set('isLoading', false);
   });
 }
 ```
