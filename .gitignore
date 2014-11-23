@@ -1,3 +1,3 @@
 *.sublime-*
 .build*
-ionic/
+scss/
