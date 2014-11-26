@@ -27,6 +27,7 @@ Properties:
 Callback (Example 1 - HTTP Request: Request more data on callback):
 
 ```js
+// Callback Function
 getUsers = function (count) {
   HTTP.get('http://api.randomuser.me/?results=20', function (error, result) {
     if (! error)
@@ -66,6 +67,8 @@ Template.infinite.helpers({
 
 ...
 
+
+// Callback Function
 getUsers = function (count) {
   // Set extra as the number of additional elements to load on each callback;
   var extra = 20;
@@ -76,4 +79,4 @@ getUsers = function (count) {
 }
 ```
 
-count: provides the current number of children within the scroller (may be usefull to take in account when calling an API)
+count: provides the current number of children within the scroller;
