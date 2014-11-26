@@ -40,7 +40,7 @@ getUsers = function (count) {
 ```
 
 
-Callback (Example 2 - Reactive Subscription & Cursor: Update your subscription to return more data as well as the limit on the cursor within the helper):
+Callback (Example 2 - Reactive Cursor & Subscription: Using a limit for your subscription aswell as a cursor within a helper):
 
 ```js
 
