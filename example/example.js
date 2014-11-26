@@ -34,3 +34,6 @@ getUsers = function (count) {
     Session.set('isLoading', false);
   });
 }
+
+
+Meteor.sub
